@@ -1,0 +1,107 @@
+/* 전체 앱 레이아웃 */
+.app {
+    font-family: 'Pretendard', sans-serif; 
+    width: 600px;
+    max-width: 90%; 
+    display: flex;
+    margin: 0 auto;  /* 가로 가운데 정렬 */
+    flex-direction: column; /* 세로로 쌓기 */
+
+  }
+
+  body {
+    background-color: #f2f2f2;
+    color: #555555;
+    margin-top: 50px;
+  }
+  
+  /* 제목 */
+  .app h1 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: #353535;
+  }
+  
+  /* 입력창 */
+  #todo-input {
+    text-align: center;
+    width: 300px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: block;
+    margin: 40px auto; 
+  }
+  
+  .sections {
+    display: flex; /* 가로 배치 */
+    justify-content: space-between; /* 양쪽 끝으로 벌리기 */
+    gap: 50px; /* 사이 여백 */
+  }
+
+  /* 섹션 공통 */
+  section {
+    flex: 1;      
+    background: #fff; 
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  }
+  
+  section h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  /* 해야 할 일 목록 */
+  #todo-list {
+    list-style: none;   /* 기본 불릿 제거 */
+    padding: 0;         /* 왼쪽 들여쓰기 제거 */
+    margin: 0;
+  }
+  
+  #todo-list li {
+    display: flex;                /* 텍스트 + 버튼 가로 배치 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+  }
+  
+  /* 해낸 일 목록 */
+  #done-list {
+    list-style: none;   /* 기본 불릿 제거 */
+    padding: 0;         /* 왼쪽 들여쓰기 제거 */
+    margin: 0;
+  }
+  
+  #done-list li {
+    display: flex;                /* 텍스트 + 버튼 가로 배치 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+  }
+  
+  /* 버튼 공통 */
+  button {
+    padding: 4px 8px;
+    margin-left: 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* 완료 버튼 */
+  button.complete {
+    /* background-color: 초록색, color: white */
+  }
+  
+  /* 삭제 버튼 */
+  button.delete {
+    /* background-color: 빨강, color: white */
+  }
+  
