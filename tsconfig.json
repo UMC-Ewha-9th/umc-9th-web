@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "es2016",
+    "rootDir": "./src",
+    "outDir": "./todo",
+    "esModuleInterop":true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "noEmitOnError": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true    
+  }
+}
