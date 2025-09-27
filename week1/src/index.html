@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMC 9th Web Study Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h1>UMC 9th Web Study Planner</h1>
+      </header>
+      <main>
+        <input 
+            id="todo-input"
+            type="text"
+            placeholder="할 일을 입력해주세요."
+        />
+        <div class="sections">
+            <section>
+                <h2>해야 할 일</h2>
+                <ul id="todo-list"></ul>
+            </section>
+
+            <section>
+                <h2>해낸 일</h2>
+                <ul id="done-list"></ul>
+            </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="dist/app.js"></script>
+  </body>
+</html>
