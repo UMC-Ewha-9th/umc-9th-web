@@ -1,0 +1,11 @@
+{
+  "name": "todo-ts",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  }
+}
