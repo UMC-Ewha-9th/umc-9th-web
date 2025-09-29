@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Mini SPA</title>
+</head>
+<body>
+  <nav>
+    <a href="/" data-link>Home</a> |
+    <a href="/about" data-link>About</a>
+  </nav>
+  <main id="app"></main>
+
+  <script>
+    const app = document.getElementById("app");
+
+    // 경로에 따라 화면을 바꿔주는 함수
+    function router(pathname) {
+      if (pathname === "/") {
+        app.innerHTML = "<h1>Home</h1><p>Niz의 홈 화면입니다.</p>";
+      } else if (pathname === "/about") {
+        app.innerHTML = "<h1>About</h1><p>Niz의 소개 화면입니다.</p>";
+      } else {
+        app.innerHTML = "<h1>404</h1><p>페이지를 찾을 수 없습니다.</p>";
+      }
+    }
+
+    // 처음 페이지 로드
+    router(location.pathname);
+
+    // a[data-link] 클릭 가로채기
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[data-link]");
+      if (link) {
+        e.preventDefault(); // 브라우저가 페이지를 새로 불러오는 기본 동작 막기
+        history.pushState(null, "", link.href); // 주소만 바꾸기
+        router(link.pathname); // 새 화면 그리기
+      }
+    });
+
+    // 브라우저 뒤로/앞으로 버튼 눌렀을 때
+    window.addEventListener("popstate", () => {
+      router(location.pathname);
+    });
+  </script>
+</body>
+</html>
