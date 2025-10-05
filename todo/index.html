@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./app.ts"></script>
+</head>
+<body>
+    <header>
+        <h1>Lesly TODO</h1>
+    </header>
+    <input type="text" placeholder="스터디 계획을 작성해보세요!" name="todo_in" onkeydown="keyCodeCheck()" id="todoInput"/>
+    <div>
+        <section>
+            <h2>해야 할 일</h2>
+            <ul id="will_todo">
+                <li>web 0주차<button>완료</button></li>
+                <li>web 1주차<button>완료</button></li>
+                <li>node 0주차<button>완료</button></li>
+                <li>node 1주차<button>완료</button></li>
+            </ul>
+        </section>
+        <section>
+            <h2>해낸 일</h2>
+            <ul id="done_todo">
+                <li>web 0주차<button>삭제</button></li>
+                <li>web 1주차<button>삭제</button></li>
+                <li>node 0주차<button>삭제</button></li>
+                <li>node 1주차<button>삭제</button></li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
