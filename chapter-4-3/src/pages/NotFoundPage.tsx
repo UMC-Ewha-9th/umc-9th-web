@@ -3,5 +3,3 @@ const NotFoundPage = () => {
 };
 
 export default NotFoundPage;
-
-// UI 꾸미기?
