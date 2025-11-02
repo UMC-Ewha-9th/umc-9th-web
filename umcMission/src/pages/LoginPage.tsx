@@ -1,3 +1,4 @@
+import { postSignin } from "../apis/auth";
 import useForm from "../hooks/useForm";
 import { validateSignin, type UserSigninInformation } from "../utils/validate";
 
@@ -11,8 +12,27 @@ const LoginPage = () => {
             validate: validateSignin,
         });
 
-    const handleSubmit = () => {};
-    console.log(values);
+    const handleSubmit = async () => {
+        try {
+            const response = await postSignin(values);
+            const accessToken = response.data.accessToken;
+            if (accessToken) {
+                localStorage.setItem("accessToken", accessToken); // 토큰 저장
+                console.log("로그인 성공 및 토큰 저장 완료!!");
+            } else {
+                console.error("실패! 서버 응답에 토큰이 누락됨.");
+            }
+        } catch (error) {
+            console.log("에러 발생");
+        }
+        // console.log(values);
+        // console.log(response);
+    };
+
+    // 오류가 하나라도 있거나,입력값이 비어있으면 버튼을 비활성화
+    const isDisabled =
+        Object.values(errors || {}).some((error) => error.length > 0) || // 오류가 있으면 true
+        Object.values(values).some((value) => value === ""); // 입력값이 비어있으면 true
 
     return (
         <div className="flex flex-col items-center justify-center h-full gap-4">
@@ -45,7 +65,7 @@ const LoginPage = () => {
                 <button
                     type="button"
                     onClick={handleSubmit}
-                    disabled={false}
+                    disabled={isDisabled}
                     className="w-full bg-blue-600 text-white py-3 text-lg hover:bg-blue-700 cursor-pointer"
                 >
                     로그인

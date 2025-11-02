@@ -5,6 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
 import HomeLayout from "./layout/HomeLayout";
 import SignupPage from "./pages/SignupPage";
+import MyPage from "./pages/MyPage";
 
 // 1. 홈페이지
 // 2. 로그인 페이지
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
                 path: "signup",
                 element: <SignupPage />,
             },
+            { path: "my", element: <MyPage /> },
         ],
     },
 ]);
