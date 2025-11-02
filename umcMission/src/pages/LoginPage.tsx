@@ -1,8 +1,11 @@
 import { postSignin } from "../apis/auth";
+import { LOCAL_STORAGE_KEY } from "../constants/key";
 import useForm from "../hooks/useForm";
+import { userLocalStorage } from "../hooks/useLocalStorage";
 import { validateSignin, type UserSigninInformation } from "../utils/validate";
 
 const LoginPage = () => {
+    const { setItem } = userLocalStorage(LOCAL_STORAGE_KEY.accessToken);
     const { values, errors, touched, getInputProps } =
         useForm<UserSigninInformation>({
             initialValue: {
@@ -17,7 +20,8 @@ const LoginPage = () => {
             const response = await postSignin(values);
             const accessToken = response.data.accessToken;
             if (accessToken) {
-                localStorage.setItem("accessToken", accessToken); // 토큰 저장
+                // localStorage.setItem("accessToken", accessToken); // 토큰 저장
+                setItem(response.data.accessToken);
                 console.log("로그인 성공 및 토큰 저장 완료!!");
             } else {
                 console.error("실패! 서버 응답에 토큰이 누락됨.");
