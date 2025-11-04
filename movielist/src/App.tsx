@@ -6,6 +6,8 @@ import NotFound from './pages/not-found';
 import Movies from './pages/movies';
 import RootLayout from './layout/root-layout';
 import MovieDetailPage from './pages/movie-detail';
+import SignupPage from './pages/signup';
+import LoginPage from './pages/login';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,14 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <NotFound />,
     children: [
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'signup',
+        element: <SignupPage />,
+      },
       {
         index: true,
         element: <HomePage />,
