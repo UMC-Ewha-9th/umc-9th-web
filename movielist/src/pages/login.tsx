@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -27,10 +27,15 @@ interface UserInfo {
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // ✅ 추가: 이전 페이지 정보 활용
   const [showPassword, setShowPassword] = useState(false);
-  
+
   // 로컬 스토리지에 사용자 정보 저장
   const [, setUserInfo] = useLocalStorage<UserInfo | null>('userInfo', null);
+
+  // ✅ 추가: 로그인 전에 접근하려던 페이지 (ProtectedRoute에서 넘긴 state.from)
+  const from =
+    (location.state as { from?: { pathname: string } })?.from?.pathname || '/';
 
   const {
     register,
@@ -44,18 +49,19 @@ const LoginPage = () => {
   const onSubmit = (data: LoginForm) => {
     // TODO: 실제 로그인 API 호출
     console.log('로그인 데이터:', data);
-    
+
     // 로그인 성공 후 사용자 정보 저장
     const newUserInfo: UserInfo = {
       email: data.email,
       nickname: 'User', // 실제로는 API 응답에서 받아옴
       accessToken: 'dummy-token-456', // 실제로는 API 응답에서 받아옴
     };
-    
+
     setUserInfo(newUserInfo);
-    
+
     alert('로그인 성공!');
-    navigate('/');
+    // ✅ 수정: 원래 가려던 페이지로 리다이렉트
+    navigate(from, { replace: true });
   };
 
   return (
@@ -84,7 +90,7 @@ const LoginPage = () => {
               />
               <path
                 fill="#34A853"
-                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66	l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
               />
               <path
                 fill="#FBBC05"
