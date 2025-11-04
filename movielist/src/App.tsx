@@ -8,6 +8,10 @@ import RootLayout from './layout/root-layout';
 import MovieDetailPage from './pages/movie-detail';
 import SignupPage from './pages/signup';
 import LoginPage from './pages/login';
+import SearchPage from './pages/search';
+
+/* ✅ 추가: 보호 라우트와 페이지 임포트 */
+import ProtectedRoute from './components/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +54,16 @@ const router = createBrowserRouter([
       {
         path: 'movies/:movieId', // 가장 마지막에 배치
         element: <MovieDetailPage />,
+      },
+
+      /* ✅ 추가: 인증 필요한 보호 라우트 */
+      {
+        path: 'search',
+        element: (
+          <ProtectedRoute>
+            <SearchPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
